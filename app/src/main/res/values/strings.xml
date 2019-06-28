@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">HackTrain</string>
+    <string name="search_for_a_specific_book">Search For A Specific Book</string>
+    <string name="enter_book_name">Enter Book Name..</string>
+    <string name="search">Search</string>
+    <string name="notifiction">Notifiction</string>
+    <string name="home_page">Home Page</string>
+    <string name="exchnage_book">Exchnage Book</string>
+</resources>
