@@ -13,17 +13,19 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
+import android.util.Log;
+import android.util.SparseArray;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import com.google.android.gms.vision.Frame;
+import com.google.android.gms.vision.text.TextBlock;
+import com.google.android.gms.vision.text.TextRecognizer;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -37,7 +39,7 @@ public class SearchForABook extends AppCompatActivity {
     private Button mBtn_search,mBtn_confirm_upload,mBtn_cancel_confirm;
     private CardView mCard_result;
     private CircleImageView mImg_book;
-    private TextView mTxt_book_name;
+    private TextView mTxt_book_name,mTxt_result;
     private  TextView mTxt_book_auth;
     private  ImageView mImg_star1,mImg_star2,mImg_star3,mImg_star4,mImg_star5,mImg_capture_camera,mImg_show_result;
     private  Bitmap bitmap;
@@ -70,6 +72,7 @@ public class SearchForABook extends AppCompatActivity {
         mImg_show_result=dialog_confirm.findViewById(R.id.img_show_result);
         mBtn_confirm_upload=dialog_confirm.findViewById(R.id.btn_confirm_upload);
         mBtn_cancel_confirm=dialog_confirm.findViewById(R.id.btn_cancel_confirm);
+        mTxt_result=findViewById(R.id.txt_result);
     }
     private void makeEvent() {
         mImg_camera.setOnClickListener(new View.OnClickListener() {
@@ -124,6 +127,7 @@ public class SearchForABook extends AppCompatActivity {
                 dialog_confirm.show();
                 if(bitmap!=null) {
                     mImg_show_result.setImageBitmap(bitmap);
+                    getTextFromImage();
                 }
             }
         }
@@ -135,6 +139,42 @@ public class SearchForABook extends AppCompatActivity {
             dialog_confirm.dismiss();
         }
     }
+    private void getTextFromImage(){
+        // To get bitmap from resource folder of the application.
+        TextRecognizer txtRecognizer = new TextRecognizer.Builder(getApplicationContext()).build();
+        if (!txtRecognizer.isOperational())
+        {
+            // Shows if your Google Play services is not up to date or OCR is not supported for the device
+          //  txt_text.setText("Detector dependencies are not yet available");
+            mTxt_result.setText("Detector dependencies are not yet available");
+        }
+        else
+        {
+            // Set the bitmap taken to the frame to perform OCR Operations.
+            Frame frame = new Frame.Builder().setBitmap(bitmap).build();
+            SparseArray items = txtRecognizer.detect(frame);
+            StringBuilder strBuilder = new StringBuilder();
+            for (int i = 0; i < items.size(); i++)
+            {
+                TextBlock item = (TextBlock)items.valueAt(i);
+                strBuilder.append(item.getValue());
+                strBuilder.append(" ");
+            }
+            String result=mTxt_result.toString();
+            if(result.isEmpty()){
+                mTxt_result.setText("Can't recognize it");
+                Log.d("ooooo","Can't recognize it");
+
+            }else {
+                mTxt_result.setText(strBuilder.toString());
+                Log.d("EEEEE",strBuilder.toString());
+
+
+            }
+
+        }
+    }
+
 
 
 }

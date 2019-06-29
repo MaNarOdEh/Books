@@ -5,4 +5,7 @@
     <color name="colorAccent">#D81B60</color>
     <color name="colorMainWindow">#f6f4f4</color>
     <color name="colorButton">#7086f1</color>
+    <color name="white">#FFFFFF</color>
+    <color name="pinky">#e485ed</color>
+    <color name="greeny">#8dc2a4</color>
 </resources>

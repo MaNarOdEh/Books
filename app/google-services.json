@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "299715343639",
+    "firebase_url": "https://hacktrain-a5b28.firebaseio.com",
+    "project_id": "hacktrain-a5b28",
+    "storage_bucket": "hacktrain-a5b28.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:299715343639:android:13c3c6a65bcbec53",
+        "android_client_info": {
+          "package_name": "com.example.hacktrain"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "299715343639-6gbmqovc5cs1g18kk8esu6357fl4f2tu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.myapplication",
+            "certificate_hash": "5164880a9ddf1b8b81bc1530ecadae00c55e3520"
+          }
+        },
+        {
+          "client_id": "299715343639-lbevffelvn6tf51lb1m38f7onrco0o1d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEDMt-HdvkOiGEqJb7LlYnVM_SNJFPm_g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "299715343639-lbevffelvn6tf51lb1m38f7onrco0o1d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

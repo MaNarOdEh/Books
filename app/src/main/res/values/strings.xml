@@ -6,4 +6,10 @@
     <string name="notifiction">Notifiction</string>
     <string name="home_page">Home Page</string>
     <string name="exchnage_book">Exchnage Book</string>
+    <string name="login_welcome">Expand Your Galaxy</string>
+    <string name="username">username</string>
+    <string name="password">password</string>
+    <string name="loginbutton">login</string>
+    <string name="or">or login with</string>
+    <string name="signup">sign up</string>
 </resources>

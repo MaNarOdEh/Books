@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
             ,mFab_btn_exchange_book,mFab_suggestion_books,mFab_notification,mFab_request;
     private Button mBtn_search_cook, mBtn_exchange_book, mBtn_suggestion_books;
     boolean isFABOpen = false;
+    FirebaseAuth mAuth; //firebase authentication
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         mBtn_suggestion_books =findViewById(R.id.btn_suggestion_books);
         mFab_notification=findViewById(R.id.fab_notification);
         mFab_request=findViewById(R.id.fab_request);
+        mAuth=FirebaseAuth.getInstance();
     }
     private void defineEvents() {
         mFab.setOnClickListener(new View.OnClickListener() {
@@ -95,7 +99,16 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        mFab_log_out.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAuth.signOut();
+                logInPage();
+               // finish();
+            }
+        });
     }
+
     private  void searchBooks(){
         startActivity(new Intent(MainActivity.this,SearchForABook.class));
 
@@ -122,6 +135,16 @@ public class MainActivity extends AppCompatActivity {
         mFab_menu.animate().translationX(0);
         mFab_log_out.animate().translationX(0);
     }
+    private void logInPage(){
+      //  startActivity(new Intent(MainActivity.this,S));
+        finish();
+    }
 
-
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if(mAuth.getCurrentUser()==null){
+            logInPage();
+        }
+    }
 }
