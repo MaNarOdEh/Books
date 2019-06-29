@@ -51,6 +51,12 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        mFab_menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,ProfileActivity.class));
+            }
+        });
         mFab_search_books.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,7 +110,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 mAuth.signOut();
                 logInPage();
-               // finish();
             }
         });
     }
@@ -118,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     private  void suggestionBooks(){
+        startActivity(new Intent(MainActivity.this,suggestionBooksActivity.class));
 
     }
 
@@ -136,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
         mFab_log_out.animate().translationX(0);
     }
     private void logInPage(){
-      //  startActivity(new Intent(MainActivity.this,S));
+        startActivity(new Intent(MainActivity.this,login.class));
         finish();
     }
 

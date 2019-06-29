@@ -1,16 +1,90 @@
 {
   "project_info": {
     "project_number": "299715343639",
-    "firebase_url": "https://hacktrain-a5b28.firebaseio.com",
-    "project_id": "hacktrain-a5b28",
-    "storage_bucket": "hacktrain-a5b28.appspot.com"
+    "firebase_url": "https://expansion-a5b28.firebaseio.com",
+    "project_id": "expansion-a5b28",
+    "storage_bucket": "expansion-a5b28.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:299715343639:android:13c3c6a65bcbec53",
+        "mobilesdk_app_id": "1:299715343639:android:ce2dd2ceab0459df",
+        "android_client_info": {
+          "package_name": "com.example.chatapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "299715343639-k139qafht43avs4s9jth96b6mvfgjkve.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.chatapp",
+            "certificate_hash": "ff7f9b004f2234251e9c2aa094bc9ac3865ea0f5"
+          }
+        },
+        {
+          "client_id": "299715343639-lbevffelvn6tf51lb1m38f7onrco0o1d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEDMt-HdvkOiGEqJb7LlYnVM_SNJFPm_g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "299715343639-lbevffelvn6tf51lb1m38f7onrco0o1d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:299715343639:android:b7dbb51d2f61bd4c",
         "android_client_info": {
           "package_name": "com.example.hacktrain"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "299715343639-4t3rkkd54l0fcmjg0a8vr5ea24okp9cc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hacktrain",
+            "certificate_hash": "df4807fdd0cc2e09d713c5370ed0e5db66c75166"
+          }
+        },
+        {
+          "client_id": "299715343639-lbevffelvn6tf51lb1m38f7onrco0o1d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEDMt-HdvkOiGEqJb7LlYnVM_SNJFPm_g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "299715343639-lbevffelvn6tf51lb1m38f7onrco0o1d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:299715343639:android:13c3c6a65bcbec53",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
         }
       },
       "oauth_client": [

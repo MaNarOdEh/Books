@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.Manifest;
 import android.app.Activity;
 import android.app.Dialog;
@@ -13,11 +12,16 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class PostABook extends AppCompatActivity {
     private static final int RESULT_IMAGE_CAPTURE = 22;
@@ -27,6 +31,7 @@ public class PostABook extends AppCompatActivity {
     private  Bitmap bitmap;
     private Dialog mDialog_confirm;
     private ImageView mImg_show_result;
+    private static  final int RESULT_UPLOPAD_FROM_GALLERY=44;
 
 
     @Override
@@ -55,6 +60,8 @@ public class PostABook extends AppCompatActivity {
         mBtn_upload_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivityForResult(new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI), RESULT_UPLOPAD_FROM_GALLERY);
+
 
             }
         });
@@ -98,6 +105,26 @@ public class PostABook extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+        //Detects request codes
+        if(requestCode==RESULT_UPLOPAD_FROM_GALLERY && resultCode == Activity.RESULT_OK) {
+            Uri selectedImage = data.getData();
+            bitmap = null;
+            try {
+
+                bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
+                mDialog_confirm.show();
+                if(bitmap!=null) {
+                    mImg_show_result.setImageBitmap(bitmap);
+                }
+            } catch (FileNotFoundException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
         if(requestCode== RESULT_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK) {
             Bundle extras = data.getExtras();
             bitmap = (Bitmap) extras.get("data");
