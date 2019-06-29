@@ -26,7 +26,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         // each data item is just a string in this case
         public TextView mTxt_name_sender;
         public TextView mTxt_body;
-        public CircleImageView iImg_circle_view;
+        public ImageView iImg_circle_view;
         public ImageView mImg_delete;
         public ViewHolder(View viewItems) {
             super(viewItems);

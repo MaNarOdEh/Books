@@ -17,7 +17,8 @@
         android:roundIcon="@drawable/feedback"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".FolowersActivity"></activity>
+        <activity android:name=".ProfileActivity" />
         <activity android:name=".ContinueSignIn" />
         <activity android:name=".SignIn" />
         <activity android:name=".suggestionBooksActivity" />

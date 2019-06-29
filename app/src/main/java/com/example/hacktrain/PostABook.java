@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -32,6 +33,7 @@ public class PostABook extends AppCompatActivity {
     private Dialog mDialog_confirm;
     private ImageView mImg_show_result;
     private static  final int RESULT_UPLOPAD_FROM_GALLERY=44;
+    private ImageView img_view;
 
 
     @Override
@@ -55,6 +57,7 @@ public class PostABook extends AppCompatActivity {
         mImg_show_result= mDialog_confirm.findViewById(R.id.img_show_result);
         mBtn_confirm_upload= mDialog_confirm.findViewById(R.id.btn_confirm_upload);
         mBtn_cancel_confirm= mDialog_confirm.findViewById(R.id.btn_cancel_confirm);
+        img_view=findViewById(R.id.img_view);
     }
     private void makeEvents(){
         mBtn_upload_img.setOnClickListener(new View.OnClickListener() {
@@ -83,7 +86,16 @@ public class PostABook extends AppCompatActivity {
         mBtn_capture_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if ( ContextCompat.checkSelfPermission( PostABook.this, android.Manifest.permission.ACCESS_COARSE_LOCATION )
+                        != PackageManager.PERMISSION_GRANTED ) {
+                    ActivityCompat.requestPermissions(PostABook.this, new String[]{Manifest.permission.CAMERA},1);
+                    Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(cameraIntent, RESULT_IMAGE_CAPTURE);
 
+                }else {
+                    Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(cameraIntent, RESULT_IMAGE_CAPTURE);
+                }
             }
         });
         mBtn_confirm_upload.setOnClickListener(new View.OnClickListener() {
@@ -98,6 +110,17 @@ public class PostABook extends AppCompatActivity {
             public void onClick(View v) {
                 bitmap=null;
                 mDialog_confirm.dismiss();
+            }
+        });
+        mBtn_post.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String post_details=mEdit_situations.getText().toString();
+                if(post_details.isEmpty()){
+                    Toast.makeText(PostABook.this, "Empty Field Input Any Thing Please!!", Toast.LENGTH_SHORT).show();
+                }else{
+
+                }
             }
         });
 
@@ -116,6 +139,8 @@ public class PostABook extends AppCompatActivity {
                 mDialog_confirm.show();
                 if(bitmap!=null) {
                     mImg_show_result.setImageBitmap(bitmap);
+                    img_view.setVisibility(View.VISIBLE);
+                    img_view.setImageBitmap(bitmap);
                 }
             } catch (FileNotFoundException e) {
                 // TODO Auto-generated catch block
@@ -132,6 +157,9 @@ public class PostABook extends AppCompatActivity {
                 mDialog_confirm.show();
                 if(bitmap!=null) {
                     mImg_show_result.setImageBitmap(bitmap);
+                    img_view.setVisibility(View.VISIBLE);
+                    img_view.setImageBitmap(bitmap);
+
                 }
             }
         }

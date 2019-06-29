@@ -23,8 +23,8 @@
             android:background="@drawable/circle_border">
 
             <ImageView
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
                 android:adjustViewBounds="true"
                 android:background="@drawable/circle"
                 android:padding="3dp"
@@ -33,11 +33,11 @@
 
             <ImageView
                 android:id="@+id/add_Photo"
-                android:layout_width="49dp"
-                android:layout_height="54dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:adjustViewBounds="true"
                 android:scaleType="centerInside"
-                android:src="@drawable/add" />
+                android:src="@drawable/camera_search" />
 
 
         </RelativeLayout>
@@ -52,7 +52,7 @@
             android:fontFamily="sans-serif-light"
             android:text="Name"
             android:textColor="@android:color/white"
-            android:textSize="32sp" />
+            android:textSize="16sp" />
 
 
         <Button
@@ -87,6 +87,7 @@
         android:orientation="horizontal">
 
         <RelativeLayout
+            android:id="@+id/follow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -94,7 +95,8 @@
             android:background="@color/followersBg"
             android:gravity="center"
             android:paddingBottom="5dp"
-            android:paddingTop="5dp">
+            android:paddingTop="5dp"
+           >
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -127,6 +129,7 @@
 
 
         <RelativeLayout
+            android:id="@+id/folloers"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

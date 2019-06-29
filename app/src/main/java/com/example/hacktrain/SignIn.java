@@ -73,7 +73,6 @@ public class SignIn extends AppCompatActivity {
                                     } else {
                                         Toast.makeText(SignIn.this, task.getException().getMessage(),
                                                 Toast.LENGTH_LONG).show();
-                                       // Log.d("EmailWrong",task.getException().getMessage()+"    "+task.getResult());
                                     }
                                 }
                             });
